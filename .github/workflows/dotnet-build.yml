@@ -23,14 +23,14 @@ jobs:
         dotnet-version: '7.0.x' # Utilize a versão apropriada do SDK .NET
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./github4women/github4women.csproj
 
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build ./github4women/github4women.csproj --configuration Release --no-restore
 
     - name: Run tests
-      run: dotnet test --configuration Release --no-build --verbosity normal
+      run: dotnet test ./github4women/github4women.csproj --configuration Release --no-build --verbosity normal
 
     - name: Publish build artifacts
       if: success()
-      run: dotnet publish --configuration Release --output ./artifacts
+      run: dotnet publish ./github4women/github4women.csproj --configuration Release --output ./artifacts
